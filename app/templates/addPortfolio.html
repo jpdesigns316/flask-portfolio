@@ -1,0 +1,79 @@
+{% extends 'admin.html' %} {% block content %} {% if 'username' in session %}
+
+<div class="container">
+    <div class="row text-center">
+        <h1>Add to Your Portfolio</h1></div>
+    <form method="post" class="form-horizontal" action="#">
+        <fieldset id="portfolio_menu">
+            <div class="form-group">
+                <label class="control-label col-xs-3">Title: <span  class="img-help glyphicon glyphicon-question-sign" aria-hidden="true"></span></label>
+                <div class="col-xs-9">
+                    <input type="text" class="form-control" name="title" placeholder="Title">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-3">Skills Used:</label>
+                <div class="col-xs-9">
+                    <input type="text" class="form-control" name="skills_used" placeholder="Skill used (i.e HTML CSS Javascript)">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-3">Demo URL:</label>
+                <div class="col-xs-9">
+                    <input type="text" class="form-control" name="demo_url" placeholder="URL of Demo">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-3">Github URL:</label>
+                <div class="col-xs-9">
+                    <input type="text" class="form-control" name="github_url" placeholder="Github Repository">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputDescription" class="control-label col-xs-3">Desciption:</label>
+                <div class="col-xs-9">
+                    <textarea type="test" class="form-control" name="description" placeholder="BDescription" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputLanguage" class="control-label col-xs-3">Client:</label>
+                <div class="col-xs-9">
+                    <input type="test" class="form-control" name="client" placeholder="Enter the client this project was for">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputLanguage" class="control-label col-xs-3">Cretion Date:</label>
+                <div class="col-xs-9">
+                    <input type="test" class="form-control" name="created" placeholder="Enter month and year">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputLanguage" class="control-label col-xs-3">Service:</label>
+                <div class="col-xs-9">
+                    <input type="test" class="form-control" name="service" placeholder="Web Development">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputLanguage" class="control-label col-xs-3">Image:</label>
+                <div class="col-xs-9">
+                    <input type="test" class="form-control" name="image" placeholder="../static/image/">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputLanguage" class="control-label col-xs-3">Modal:</label>
+                <div class="col-xs-9">
+                    <input type="test" class="form-control" name="modal_id" placeholder="../static/image/">
+                </div>
+            </div>
+            <div class="text-center">
+                <input type="submit" class="btn btn-blue" value="Submit">
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+{% else %}
+<h1>You be here. Your IP has been logged</h1> {% endif %}
+</div>
+
+{% endblock %}

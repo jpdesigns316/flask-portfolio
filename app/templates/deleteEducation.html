@@ -1,0 +1,53 @@
+{% extends "admin.html" %} {% block content %}
+
+<script>
+    $("#content-container").removeClass("content");
+
+</script>
+<div class="container">
+    <div class="col-md-12 form-back">
+        <form action="{{url_for('delete_education',education_id=education.id)}}" method="post">
+            <legend>Deleting {{education.school}}</legend>
+            <fieldset>
+                <strong>WARNING:</strong> Deleting all information about {{education.school}} will permanently delete form the database.
+            </fieldset>
+            <fieldset>
+                <label class="confirm-delete">
+                      Check box to confirm delete, else click cancel.<br>
+                      <input type="checkbox"  id="confirm-delete"/> Are you sure?
+                  </label>
+            </fieldset>
+            <fieldset>
+                <input type="submit" name="submit" class="btn inputButton" id="delete" value="Delete" disabled/>
+                <a href="{{url_for('admin')}}" class="btn btn-blue" id="cancel" alt="Cancel">Cancel</a>
+            </fieldset>
+        </form>
+    </div>
+
+</div>
+<script>
+    var deleteBtn = document.getElementById('delete');
+    var confirm = document.getElementById('confirm-delete');
+    var checked = 0;
+
+    confirm.onchange = function() {
+        deleteChange();
+    }
+
+    function deleteChange() {
+        if (checked == 0) {
+            deleteBtn.style.background = "#0f0";
+            deleteBtn.style.color = "#000"
+            deleteBtn.disabled = false;
+            checked = 1;
+        } else {
+            deleteBtn.style.background = "#f00";
+            deleteBtn.style.color = "gray"
+            deleteBtn.disabled = true;
+            checked = 0;
+        }
+    }
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'admin.html' %} {% block content %}
+<section>
+    <div class="container">
+        <div class="col-md-6 col-md-offset-4 panel panel-default">
+
+            <h1 class="text-center">Add A Skill</h1>
+            <div class="col-md-6 col-md-offset-4">
+
+
+                <form action="" method="post" class="form-inline">
+                    <div class="form-group">
+                        <label for="skill">Skill</label>
+                        <input type="text" class="form-control" name="skill" value="{{ skill.skill}}">
+
+                    </div>
+                    <label for="skill">Level</label>
+                    <div class="form-group">
+
+                        <div class="col-md-3">
+                            <select name="level" class="form-control">
+                            <option value="1" {% if skill.level == 1 %} selected {% endif %}>Beginner</option>
+                            <option value="2" {% if skill.level == 2 %} selected {% endif %}>Intermediate</option>
+                            <option value="3" {% if skill.level == 3 %} selected {% endif %}>Advanced</option>
+                        </select>
+                        </div>
+
+                    </div>
+                    <div class="text-center">
+                        <input type="submit" class="btn btn-blue" value="Submit">
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}

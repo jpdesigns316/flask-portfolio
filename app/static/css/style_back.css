@@ -1,0 +1,101 @@
+@media screen and (max-width: 550px) {
+    .book-img {
+        display: flex;
+        flex-wrap: wrap;
+        
+    }
+    
+    .navbar-catalog {
+      background-color: #f8f8f8;
+      border-color: #e7e7e7;
+    }
+    
+    /* Bootstrap vertical menu / navigation bar
+   A PEN BY Michael Rambeau
+   http://codepen.io/mikeair/pen/Kfyin/ */ 
+    .sidebar-nav .navbar .navbar-collapse {
+        max-height: none;
+        float: none;
+        background-color: #f8f8f8;
+        border-color: #e7e7e7;
+    }
+    .sidebar-nav .navbar ul {
+        float: none;
+        display: block;
+    }
+    .sidebar-nav .navbar li {
+        float: none;
+        display: block;
+    }
+    .sidebar-nav .navbar li a {
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+    
+
+
+}
+
+@media screen and (max-width: 768px) {
+    .books {
+        width: 100%;
+    }
+    
+    .content {
+        width: 100%;
+    }
+}
+
+.logo {
+    border-radius: 10px;
+    padding: 20px;
+}
+
+
+.middle {
+    margin-top: 10px;
+}
+
+.books {
+    margin-right: 5px;
+    float: left;
+    min-width: 20%;
+}
+
+.content {
+    min-width: 75%;
+    
+    background-color: white;
+}
+
+.btn-blue {
+    color: #000;
+    background-color: #00aeef;
+}
+
+.book {
+    margin: 10px;
+}
+
+
+.sidebar-nav .navbar .navbar-collapse {
+    padding: 10px;
+    max-height: none;
+    float: none;
+    
+
+}
+.sidebar-nav .navbar ul {
+    float: none;
+    display: block;
+}
+.sidebar-nav .navbar li {
+    float: none;
+    display: block;
+}
+.sidebar-nav .navbar li a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+

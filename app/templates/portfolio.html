@@ -1,0 +1,30 @@
+{% extends 'admin.html' %} {% block content %} {% if 'username' in session %}
+
+<div class="container skills">
+    <div class="col-md-6 col-md-offset-3">
+        <table class="table">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>id</th>
+                    <th>Title</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for port in portfolio%}
+                <tr>
+                    <th>{{ port.id}}</th>
+                    <td>{{ port.title}}</td>
+                    <td><a href="" class="btn btn-warning actions">Edit</a><button class="btn btn-danger">Delete</button></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+    {% else %}
+    <h1>You be here. Your IP has been logged</h1> {% endif %}
+</div>
+
+{% endblock %}
