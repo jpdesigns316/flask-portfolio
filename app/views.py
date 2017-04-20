@@ -6,7 +6,7 @@ from functools import wraps
 from sqlalchemy import desc
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from database_setup import Base, Skills
+from models import Base, Skills, Portfolio, Education, Work
 from flask import session as login_session
 from controllers import load_engine, get_education, get_school, get_skills,  \
     get_skill, get_portfoilo, get_project, get_experience
@@ -100,7 +100,41 @@ def add_portfolio():
         return render_template('addPortfolio.html')
 
 
+@portfolio_blueprint.route('/edit/<portfolio_id>', methods=['GET', 'POST'])
+def edit_portfolio(portfolio_id):
+    port = session.query(Portfolio).filter_by(id=portfolio_id).one()
+    if request.method == 'POST':
+        port.title = request.form['title']
+        port.skills_used = request.form['skills_used']
+        port.demo_url = request.form['demo_url']
+        port.github_url = request.form['github_url']
+        port.description = request.form['description']
+        port.client = request.form['client']
+        port.created = request.form['created']
+        port.service = request.form['service']
+        port.image = request.form['image']
+        session.add(school)
+        session.commit()
+        return redirect(url_for('portfolio.portfolio',
+                                portfolio=get_portfoilo()))
+    else:
+        return render_template('editPortfolio.html', portfolio=port)
+
+
+@portfolio_blueprint.route('/delete/<portfolio_id>',
+                           methods=['GET', 'POST'])
+def delete_portfolio(portfolio_id):
+    if request.method == 'POST':
+        session.delete(get_portfolio(portfolio_id))
+        session.commit()
+        return redirect(url_for('admin'))
+    else:
+        return render_template('deletePortfilio.html',
+                               portfolio=get_portfoilo())
+
 # Education Routes
+
+
 @education_blueprint.route('/')
 def education():
     return render_template('education.html', education=get_education())
@@ -114,11 +148,14 @@ def add_education():
                            degree=request.form['degree'],
                            major=request.form['major'],
                            location=request.form['location'],
+                           start_month=request.form['start_month'],
+                           start_year=request.form['start_year'],
+                           end_month=request.form['end_month'],
+                           end_year=request.form['end_year'],
                            bullet_1=request.form['bullet_1'],
                            bullet_2=request.form['bullet_2'],
-                           bullet_3=request.form['bullet_3'],
-                           start=request.form['start'],
-                           end=request.form['end'])
+                           bullet_3=request.form['bullet_3']
+                           )
         session.add(school)
         session.commit()
         return redirect(url_for('home'))
@@ -131,15 +168,17 @@ def add_education():
 def edit_education(education_id):
     school = session.query(Education).filter_by(id=education_id).one()
     if request.method == 'POST':
-        school.school = request.form['school'],
-        school.degree = request.form['degree'],
-        school.major = request.form['major'],
-        school.location = request.form['location'],
-        school.bullet_1 = request.form['bullet_1'],
-        school.bullet_2 = request.form['bullet_2'],
-        school.bullet_3 = request.form['bullet_3'],
-        school.start = request.form['start'],
-        school.end = request.form['end']
+        school.school = request.form['school']
+        school.degree = request.form['degree']
+        school.major = request.form['major']
+        school.location = request.form['location']
+        school.bullet_1 = request.form['bullet_1']
+        school.bullet_2 = request.form['bullet_2']
+        school.bullet_3 = request.form['bullet_3']
+        school.start_month = request.form['start_month']
+        school.start_year = request.form['start_year']
+        school.end_month = request.form['end_month']
+        school.end_year = request.form['end_year']
 
         session.add(school)
         session.commit()
@@ -161,7 +200,7 @@ def delete_education(education_id):
                                education=get_education())
 
 
-# Experience Routes# Routes
+# Experience Routes Routes
 
 
 @experience_blueprint.route('/')

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+startDOCTYPE html>
 <html lang="en">
 
 <head>
@@ -43,7 +43,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="#page-top">JP Designs 316</a>
+                <a class="navbar-brand" href="#page-top">{{ test.title}}</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -81,9 +81,9 @@
                 <div class="col-lg-12">
                     <img class="img-circle img-responsive" src="../static/image/jonathan.jpg" alt="">
                     <div class="intro-text">
-                        <span class="name">Jonathan D. Peterson</span>
+                        <span class="name">{{ test.name }}</span>
                         <hr class="star-light">
-                        <span class="skills">Web Developer - Graphic Artist</span>
+                        <span class="skills">{{ test.title }}</span>
                     </div>
                 </div>
             </div>
@@ -164,7 +164,7 @@
                         {{ school.school}} - {{ school.location}}<br> {{ school.degree }} in {{ school.major }} <br> {% if bullet_1 is not none %} • {{ school.bullet_1 }} <br> {% endif %} {% if bullet_2 == '' %} • {{ school.bullet_2 }} {% endif %} {%
                         if bullet_3 == '' %} • {{ school.bullet_3 }} <br>{% endif %}
                     </div>
-                    <div class="col-md-3">{{ school.start }} - {{ school.end}}</div>
+                    <div class="col-md-3">{{ school.start_month }} {{ school.start_year }} - {{ school.end_month}} {{ school.end_year }}</div>
                 </div>
                 {% endfor %}
             </div>
@@ -180,7 +180,7 @@
                 <div class="col-lg-12 text-center">
                     <h2>Contact Me</h2>
                     <hr class="star-primary">
-                    <p>You can contact me at jonathan@jpdesigns316.com</p>
+                    <p>You can contact me at {{ test.email}}</p>
                 </div>
             </div>
 
@@ -203,11 +203,11 @@
                     <div class="footer-col col-md-4">
                         <h3>Around the Web</h3>
                         <ul class="list-inline">
-
+                            {% if test.linkedin is not none %}
                             <li>
-                                <a href="https://www.linkedin/com/in/jpdesigns316" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
+                                <a href="https://www.linkedin.com/in/{{ test.linkedin }}" class="btn-social btn-outline" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a>
                             </li>
-
+                            {% endif%}
                         </ul>
                     </div>
 

@@ -8,67 +8,67 @@
             <div class="form-group">
                 <label class="control-label col-xs-3">Title: <span  class="img-help glyphicon glyphicon-question-sign" aria-hidden="true"></span></label>
                 <div class="col-xs-9">
-                    <input type="text" class="form-control" name="title" placeholder="Title">
+                    <input type="text" class="form-control" name="title" value="{{portfolio.title}}">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-xs-3">Skills Used:</label>
                 <div class="col-xs-9">
-                    <input type="text" class="form-control" name="skills_used" placeholder="Skill used (i.e HTML CSS Javascript)">
+                    <input type="text" class="form-control" name="skills_used" value="{{portfolio.skills_used}}">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-xs-3">Demo URL:</label>
                 <div class="col-xs-9">
-                    <input type="text" class="form-control" name="demo_url" placeholder="URL of Demo">
+                    <input type="text" class="form-control" name="demo_url" value="{{portfolio.demo_url}}">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-xs-3">Github URL:</label>
                 <div class="col-xs-9">
-                    <input type="text" class="form-control" name="github_url" placeholder="Github Repository">
+                    <input type="text" class="form-control" name="github_url" value="{{portfolio.github_url}}">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputDescription" class="control-label col-xs-3">Desciption:</label>
                 <div class="col-xs-9">
-                    <textarea type="test" class="form-control" name="description" placeholder="BDescription" rows="5"></textarea>
+                    <textarea type="test" class="form-control" name="description" value="{{portfolio.description}}" rows="5"></textarea>
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputLanguage" class="control-label col-xs-3">Client:</label>
                 <div class="col-xs-9">
-                    <input type="test" class="form-control" name="client" placeholder="Enter the client this project was for">
+                    <input type="test" class="form-control" name="client" value="{{portfolio.client}}">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputLanguage" class="control-label col-xs-3">Cretion Date:</label>
                 <div class="col-xs-9">
-                    <input type="test" class="form-control" name="created" placeholder="Enter month and year">
+                    <input type="test" class="form-control" name="created" value="{{portfolio.created}}">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputLanguage" class="control-label col-xs-3">Service:</label>
                 <div class="col-xs-9">
-                    <input type="test" class="form-control" name="service" placeholder="Web Development">
+                    <input type="test" class="form-control" name="service" value="{{portfolio.service}}">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputLanguage" class="control-label col-xs-3">Image:</label>
                 <div class="col-xs-9">
-                    <input type="test" class="form-control" name="image" placeholder="../static/image/">
+                    <input type="test" class="form-control" name="image" value="{{portfolio.image}}">
                 </div>
             </div>
-            <div class="form-group">
-                <div class="text-center">
-                    <input type="submit" class="btn btn-blue" value="Submit">
-                </div>
+
+            <div class="text-center">
+                <input type="submit" class="btn btn-blue" value="Submit">
+            </div>
 
         </fieldset>
     </form>
-    </div>
-    {% else %}
-    <h1>You be here. Your IP has been logged</h1> {% endif %}
+</div>
+{% else %}
+<h1>You be here. Your IP has been logged</h1> {% endif %}
 </div>
 
 {% endblock %}

@@ -33,11 +33,50 @@
 
                 <label for="inputDescription" class="control-label col-xs-3">Attended From:</label>
                 <div class="col-xs-2">
-                    <input type="text" class="form-control" name="start" placeholder="Month Year">
+                    <select name="start_month" class="form-control">
+                      <option value="January">January</option>
+                      <option value="February">February</option>
+                      <option value="March">March</option>
+                      <option value="April">April</option>
+                      <option value="May">May</option>
+                      <option value="June">June</option>
+                      <option value="July">July</option>
+                      <option value="August">August</option>
+                      <option value="September">September</option>
+                      <option value="October">October</option>
+                      <option value="November">November</option>
+                      <option value="December">December</option>
+                    </select>
+                    <select name="start_year" class="form-control">
+                      {% for year in range(1970,2018)%}
+
+                        <option value="{{ year }}">{{ year }}</option>
+                      {% endfor %}
+                    </select>
                 </div>
-                <label for="inputLanguage" class="control-label col-xs-1"> to </label>
+
+                <label for="inputDescription" class="control-label col-xs-3">Attended From:</label>
                 <div class="col-xs-2">
-                    <input type="text" class="form-control" name="end" placeholder="Month Year or present">
+                    <select name="end_month" class="form-control">
+                      <option value="January">January</option>
+                      <option value="February">February</option>
+                      <option value="March">March</option>
+                      <option value="April">April</option>
+                      <option value="May">May</option>
+                      <option value="June">June</option>
+                      <option value="July">July</option>
+                      <option value="August">August</option>
+                      <option value="September">September</option>
+                      <option value="October">October</option>
+                      <option value="November">November</option>
+                      <option value="December">December</option>
+                    </select>
+                    <select name="end_year" class="form-control">
+                      {% for year in range(1970,2018)%}
+
+                        <option value="{{ year }}">{{ year }}</option>
+                      {% endfor %}
+                    </select>
                 </div>
             </div>
 

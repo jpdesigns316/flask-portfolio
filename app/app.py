@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request, make_response, redirect, url_for, session, flash
+from flask import Flask, render_template, request, make_response, redirect, \
+    url_for, session, flash
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from database_setup import Base, Skills, Education, Portfolio, Work
+from models import Base, Skills, Education, Portfolio, Work
 
 from functools import wraps
 
@@ -14,12 +15,10 @@ import httplib2
 import json
 import requests
 from flask import session as login_session
+from config import user_configuration
 
-
-from views import skills_blueprint
-from views import education_blueprint
-from views import portfolio_blueprint
-from views import experience_blueprint
+from views import skills_blueprint, education_blueprint, portfolio_blueprint, \
+    experience_blueprint
 
 
 app = Flask(__name__)
@@ -46,7 +45,8 @@ def home():
                            title="JP Designs",
                            education=get_education(),
                            skills=get_skills(),
-                           portfolio=get_portfoilo())
+                           portfolio=get_portfoilo(),
+                           test=user_configuration())
 
 
 # route for handling the login page logic

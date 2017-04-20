@@ -30,11 +30,8 @@ body {
     font-family: "Lato", sans-serif;
 }
 
-#mySidenav {
-    margin-top: 100px;
-}
 .sidenav {
-
+    margin-top: 100px;
     height: 100%;
     width: 0;
     position: fixed;

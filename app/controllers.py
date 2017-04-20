@@ -1,7 +1,7 @@
 from flask import Flask
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from database_setup import Base, Skills, Portfolio, Education, Work
+from models import Base, Skills, Portfolio, Education, Work, Certication
 
 
 app = Flask(__name__)

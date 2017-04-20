@@ -1,6 +1,7 @@
 {% extends 'admin.html' %} {% block content %} {% if 'username' in session %}
 
 <div class="container skills">
+    <h1 class="text-center">Portfolio Projects</h1>
     <div class="col-md-6 col-md-offset-3">
         <table class="table">
             <thead class="thead-inverse">
@@ -15,7 +16,8 @@
                 <tr>
                     <th>{{ port.id}}</th>
                     <td>{{ port.title}}</td>
-                    <td><a href="" class="btn btn-warning actions">Edit</a><button class="btn btn-danger">Delete</button></td>
+                    <td><a href="{{ url_for('portfolio.edit_portfolio', portfolio_id=port.id) }}" class="btn btn-warning actions">Edit</a>
+                        <a href="{{ url_for('portfolio.delete_portfolio', portfolio_id=port.id) }}" class="btn btn-danger">Delete</button></td>
                 </tr>
                 {% endfor %}
             </tbody>

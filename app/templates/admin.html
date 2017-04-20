@@ -28,18 +28,94 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+	<style>
+		ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+
+		ul li {
+			display: block;
+			position: relative;
+			float: left;
+		}
+		/* This hides the dropdowns */
+
+		li ul {
+			display: none;
+		}
+
+		ul li a {
+			display: block;
+			padding: 1em;
+			text-decoration: none;
+			white-space: nowrap;
+			color: #fff;
+		}
+
+		ul li a:hover {
+			background: #2c3e50;
+		}
+		/* Display the dropdown */
+
+		li:hover>ul {
+			display: block;
+			position: absolute;
+		}
+
+		li:hover li {
+			float: none;
+		}
+
+		li:hover a {
+			background: #2c3e50;
+		}
+
+		li:hover li a:hover {
+			background: #2c3e50;
+		}
+
+		.main-navigation li ul li {
+			border-top: 0;
+		}
+		/* Displays second level dropdowns to the right of the first level dropdown */
+
+		ul ul ul {
+			left: 100%;
+			top: 0;
+		}
+		/* Simple clearfix */
+
+		ul:before,
+		ul:after {
+			content: " ";
+			/* 1 */
+			display: table;
+			/* 2 */
+		}
+
+		ul:after {
+			clear: both;
+		}
+
+	</style>
 
 </head>
 
 <body id="page-top" class="index">
 
-	<div id="mySidenav" class="sidenav">
+	<!-- <div id="mySidenav" class="sidenav">
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		<a href="{{ url_for ('skill.skills')}}">Skill</a>
-		<a href="{{ url_for ('portfolio.portfolio')}}">Portfolio</a>
-		<a href="{{ url_for ('education.education')}}">Education</a>
-		<a href="{{ url_for ('work.experience')}}">Expeiene</a>
-	</div>
+		<ul>
+			<li><a href="{{ url_for ('skill.skills')}}">Skill</a></li>
+			<li><a href="{{ url_for ('portfolio.portfolio')}}">Portfolio</a></li>
+			<li><a href="{{ url_for ('education.education')}}">Education</a></li>
+			<li><a href="{{ url_for ('work.experience')}}">Experiene</a> </li>
+		</ul>
+
+
+	</div> -->
 
 	<!-- Navigation -->
 	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
@@ -47,29 +123,48 @@
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header page-scroll">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                </button>
+									<span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+							</button>
 				<a class="navbar-brand" href="#page-top">JP Designs 316</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li class="hidden">
-						<a href="#page-top"></a>
+					<li><a href="#">Skills</a>
+						<ul>
+							<li><a href="{{ url_for ('skill.skills')}}">List Skills</a></li>
+							<li><a href="{{ url_for('skill.add_skill')}}">Add Skill</a></li>
+						</ul>
 					</li>
-
-					<li class="page-scroll">
-						<span style="font-size:30px;cursor:pointer;color:white;" onclick="openNav()">&#9776;</span>
+					<li><a href="#">Portfolio</a>
+						<ul>
+							<li><a href="{{ url_for ('portfolio.portfolio')}}">List Portfolio</a></li>
+							<li><a href="{{ url_for('portfolio.add_portfolio')}}">Add Portfolio</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Education</a>
+						<ul>
+							<li><a href="{{ url_for ('education.education')}}">List Education</a></li>
+							<li><a href="{{ url_for('education.add_education')}}">Add School</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Experience</a>
+						<ul>
+							<li><a href="{{ url_for ('portfolio.portfolio')}}">List Work Experience</a></li>
+							<li><a href="{{ url_for('portfolio.add_portfolio')}}">Add Work Experience</a></li>
+						</ul>
 					</li>
 
 				</ul>
 			</div>
+			{% if 'username' in session %}
+			<a href="{{ url_for('admin')}}" class="btn btn-warning">Admin</a>
+			<a href="{{ url_for('logout')}}" class="btn btn-warning">Log out</a> {% endif %}
 			<!-- /.navbar-collapse -->
 		</div>
 		<!-- /.container-fluid -->
 	</nav>
-
 	<header>
 		<div class="row">
 			<div class="container">
@@ -78,22 +173,13 @@
 
 
 
-					<div class="intro-text">
-						<span class="name">Admin Panel</span>
-						<div class="row justify-content-center">
-							<div class="col-md-6 col-md-offset-3">
-								<a href="{{ url_for('skill.add_skill')}}" class="btn btn-warning actions">Add Skill</a>
-								<a href="{{ url_for('portfolio.add_portfolio')}}" class="btn btn-warning actions">Add Portfolio</a>
-								<a href="{{ url_for('education.add_education')}}" class="btn btn-warning actions">Add Educaiton</a>
-								<a href="{{ url_for('work.add_experience')}}" class="btn btn-warning actions">Add Work Experience</a>
-							</div>
-						</div>
 
 
-					</div>
+
 				</div>
 			</div>
 		</div>
+
 	</header>
 
 	{% block content %} {% endblock %}

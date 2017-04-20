@@ -1,9 +1,10 @@
  {% extends 'admin.html' %} {% block content %} {% if 'username' in session %}
 
-<div class="container">
 
-
-    <h1 class="text-center">Skills</h1>
+<div class="container skills">
+    <div class="row text-center">
+        <h1>Technical Skills</h1>
+    </div>
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
 
@@ -26,7 +27,7 @@
                 {% endfor %}
             </tbody>
         </table>
-<a href="{{ url_for('skill.add_skill')}}" class="btn btn-warning actions">Add Skill</a>
+
 
         </div>
     </div>

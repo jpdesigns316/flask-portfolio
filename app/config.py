@@ -4,7 +4,7 @@ import os
 import json
 from sqlalchemy import create_engine
 
-IP_ADDRESS = 'localhost'
+HOST = 'localhost'
 PORT = 5432
 USER = ''
 PASSWORD = ''
@@ -20,3 +20,17 @@ DEBUG = True
 ADMIN = frozenset(["admin"])
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + \
     os.path.join(BASE_DIR, FILENAME + '.db')
+
+# PostgreSQL setup
+# SQLALCHEMY_DATABASE_URI = 'postgresql://' + \
+#     USER + ":" + PASSWORD + '@' + HOST + \
+#     '/' + FILENAME
+
+
+def user_configuration():
+    return {
+        'title': 'JP Designs 316',
+        'name': 'Jonathan D. Peterson',
+        'email': 'jonathan@jpdesigns316.com',
+        'linkedin': 'jpdesigns316'
+    }
