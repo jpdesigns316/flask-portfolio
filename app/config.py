@@ -31,6 +31,7 @@ def user_configuration():
     return {
         'title': 'JP Designs 316',
         'name': 'Jonathan D. Peterson',
+        'job_title': 'Full Stack Web Designer',
         'email': 'jonathan@jpdesigns316.com',
         'linkedin': 'jpdesigns316'
     }

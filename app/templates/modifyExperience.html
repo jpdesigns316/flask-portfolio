@@ -1,0 +1,84 @@
+{% extends 'admin.html' %} {% block content %} {% if 'username' in session %}
+
+<div class="container skills">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 panel experience">
+            <form method="post" class="form-horizontal" action="#">
+                <legend>Add experience</legend>
+                <div class="inner">
+                    <div>
+                        <fieldset <fieldset class="form-group">
+                            <label for="">Job Title</label>
+                            <input type="text" class="form-control" name="title" {% if type=='edit' %} value="{{ experience.title}}" {% endif %}>
+                        </fieldset>
+                    </div>
+                    <div>
+                        <fieldset class="form-group">
+                            <label for="">Company</label>
+                            <input type="text" class="form-control" name="company" {% if type=='edit' %} value="{{ experience.company}}" {% endif %}>
+
+                    </div>
+                    <div>
+                        <fieldset class="form-group">
+                            <label for="">Location</label>
+                            <input type="text" class="form-control" name="location" {% if type=='edit' %} value="{{ experience.location}}" {% endif %}>
+                        </fieldset>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <fieldset class="form-group">
+                                    <label for="">From Year</label>
+                                    <select name="start_year" class="form-control">
+                                      {% for year in range(2018,1900,-1)%}
+
+                                        <option value="{{ year }}" {% if type=='edit' %}  }{% if experience.start_year == year %} selected {% endif %} {% endif %}> {{ year }}</option>
+                                      {% endfor %}
+                                    </select>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-2">
+
+                            </div>
+                            <div class="col-md-5">
+                                <fieldset class="form-group">
+                                    <label for="">From Year</label>
+                                    <select name="start_year" class="form-control">
+                                      {% for year in range(2018,1900,-1)%}
+
+                                        <option value="{{ year }}" {% if type=='edit' %}  }{% if experience.end_year == year %} selected {% endif %} {% endif %}> {{ year }}</option>
+                                      {% endfor %}
+                                    </select>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <p>Type three points about your experience at this job</p>
+                        <fieldset class="form-group">
+                            <label for="">Bullet Point</label>
+                            <input type="text" name="bullet_1" class="form-control" {% if type=='edit' %} value="{{ experience.bullet_1}}" {% endif %}>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <label for="">Bullet Point</label>
+                            <input type="text" name="bullet_2" class="form-control" {% if type=='edit' %} value="{{ experience.bullet_2}}" {% endif %}>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <label for="">Bullet Point</label>
+                            <input type="text" name="bullet_3" class="form-control" {% if type=='edit' %} value="{{ experience.bullet_3}}" {% endif %}>
+                        </fieldset>
+                    </div>
+
+                    <div>
+                        <div class="col-md-6">
+
+                        </div>
+                        <div class="col-md-6">
+                            <input type="submit" class="btn btn-primary" value="Submit">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>{% else %}
+<h1>You be here. Your IP has been logged</h1> {% endif %}
+</div>
+
+{% endblock %}

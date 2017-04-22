@@ -8,8 +8,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from models import Base, Skills, Portfolio, Education, Work
 from flask import session as login_session
-from controllers import load_engine, get_education, get_school, get_skills,  \
-    get_skill, get_portfoilo, get_project, get_experience
+from controllers import *
 import random
 import string
 
@@ -31,7 +30,7 @@ session = DBSession()
 
 @skills_blueprint.route('/')
 def skills():
-    return render_template('skills.html', skills=get_skills())
+    return render_template('list.html', skills=get_skills(), type='skills')
 
 
 @skills_blueprint.route('/add', methods=['GET', 'POST'])
@@ -76,7 +75,7 @@ def delete_skill(skill_id):
 
 @portfolio_blueprint.route('/')
 def portfolio():
-    return render_template('portfolio.html', portfolio=get_portfoilo())
+    return render_template('list.html', portfolio=get_portfoilo(), type='portfolio')
 
 
 @portfolio_blueprint.route('/add', methods=['GET', 'POST'])
@@ -90,14 +89,15 @@ def add_portfolio():
                          github_url=request.form['github_url'],
                          description=request.form['description'],
                          client=request.form['client'],
-                         created=request.form['created'],
+                         created_month=request.form['created_month'],
+                         created_year=request.form['created_year'],
                          service=request.form['service'],
                          image=request.form['image'])
         session.add(port)
         session.commit()
         return redirect(url_for('home'))
     else:
-        return render_template('addPortfolio.html')
+        return render_template('modifyPortfolio.html', type='add')
 
 
 @portfolio_blueprint.route('/edit/<portfolio_id>', methods=['GET', 'POST'])
@@ -110,15 +110,16 @@ def edit_portfolio(portfolio_id):
         port.github_url = request.form['github_url']
         port.description = request.form['description']
         port.client = request.form['client']
-        port.created = request.form['created']
+        port.created_month = request.form['created_month']
+        port.created_year = request.form['created_year']
         port.service = request.form['service']
         port.image = request.form['image']
-        session.add(school)
+        session.add(port)
         session.commit()
         return redirect(url_for('portfolio.portfolio',
                                 portfolio=get_portfoilo()))
     else:
-        return render_template('editPortfolio.html', portfolio=port)
+        return render_template('modifyPortfolio.html', portfolio=port, type='edit')
 
 
 @portfolio_blueprint.route('/delete/<portfolio_id>',
@@ -137,7 +138,7 @@ def delete_portfolio(portfolio_id):
 
 @education_blueprint.route('/')
 def education():
-    return render_template('education.html', education=get_education())
+    return render_template('list.html', education=get_education(), type='education')
 
 
 @education_blueprint.route('/add', methods=['GET', 'POST'])
@@ -160,7 +161,7 @@ def add_education():
         session.commit()
         return redirect(url_for('home'))
     else:
-        return render_template('addEducation.html')
+        return render_template('modifyEducation.html', type='add')
 
 
 @education_blueprint.route('/edit/<education_id>',
@@ -185,7 +186,7 @@ def edit_education(education_id):
         return redirect(url_for('education.education',
                                 education=get_education()))
     else:
-        return render_template('editEducation.html', education=school)
+        return render_template('modifyEducation.html', education=school, type='edit')
 
 
 @education_blueprint.route('/delete/<education_id>',
@@ -205,7 +206,7 @@ def delete_education(education_id):
 
 @experience_blueprint.route('/')
 def experience():
-    return render_template('experience.html', experience=get_experience())
+    return render_template('list.html', experience=get_experience(), type='experience')
 
 
 @experience_blueprint.route('/add', methods=['GET', 'POST'])
@@ -223,7 +224,7 @@ def add_experience():
         session.commit()
         return redirect(url_for('home'))
     else:
-        return render_template('addexperience.html')
+        return render_template('modifyExperience.html', type='add')
 
 
 @experience_blueprint.route('/admin/experience/edit/<experience_id>',
@@ -244,7 +245,7 @@ def edit_experience(experience_id):
         return redirect(url_for('experience.experience',
                                 experience=get_experience()))
     else:
-        return render_template('editexperience.html', experience=experience)
+        return render_template('modifyExperience.html', experience=experience, type="edit")
 
 
 @experience_blueprint.route('/admin/experience/delete/<experience_id>',

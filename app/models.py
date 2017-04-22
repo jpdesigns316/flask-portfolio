@@ -33,24 +33,20 @@ class Education(Base):
     degree = Column(String)
     major = Column(String)
     location = Column(String)
-    start_month = Column(String)
     start_year = Column(Integer)
-    end_month = Column(String)
     end_year = Column(Integer)
     bullet_1 = Column(String)
     bullet_2 = Column(String)
     bullet_3 = Column(String)
 
-    def __init__(self, school, degree, major, location, start_month,
-                 start_year, end_month, end_year, bullet_1=None,
+    def __init__(self, school, degree, major, location,
+                 start_year, end_year, bullet_1=None,
                  bullet_2=None, bullet_3=None,):
         self.school = school
         self.degree = degree
         self.major = major
         self.location = location
-        self.start_mo = start_month
         self.start_year = start_year
-        self.end_month = end_month
         self.end_year = end_year
         self.bullet_1 = bullet_1
         self.bullet_2 = bullet_2
@@ -63,9 +59,7 @@ class Education(Base):
             'degree': self.degree,
             'major': self.major,
             'locaiton': self.locaiton,
-            'start_month': self.start_month,
             'start_year': self.start_year,
-            'end_month': self.end_month,
             'end_year': self.end_year,
             'bullet_1': self.bullet_1,
             'bullet_2': self.bulet_2,
@@ -83,7 +77,7 @@ class Portfolio(Base):
     github_url = Column(String, nullable=False)
     description = Column(String)
     client = Column(String, nullable=False)
-    created_month = Column(String, nullable=False)
+    created_month = Column(Integer, nullable=False)
     created_year = Column(Integer, nullable=False)
     service = Column(String, nullable=False)
     image = Column(String, nullable=False)
@@ -125,9 +119,9 @@ class Work(Base):
     id = Column(Integer, primary_key=True)
     title = Column(String)
     company = Column(String)
-    start_month = Column(String, nullable=False)
-    start_year = Column(Integer, nullable=False)
-    end_month = Column(String, nullable=False)
+    start_month = Column(Integer)
+    start_year = Column(Integer)
+    end_month = Column(Integer)
     end_year = Column(Integer)
     location = Column(String)
     bullet_1 = Column(String)
@@ -174,7 +168,7 @@ class Certication(Base):
     license_no = Column(String)
     from_month = Column(Integer, nullable=False)
     from_year = Column(Integer, nullable=False)
-    to_month = Column(String)
+    to_month = Column(Integer)
     to_year = Column(Integer)
     certification_url = Column(String)
 

@@ -69,3 +69,8 @@ body {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+
+.outer {
+  border: 1px solid grey;
+  margin: 25px;
+}

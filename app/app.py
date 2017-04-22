@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, make_response, redirect, \
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from models import Base, Skills, Education, Portfolio, Work
-
+from controllers import *
 from functools import wraps
 
 import random
@@ -31,6 +31,10 @@ app.register_blueprint(education_blueprint, url_prefix='/admin/education')
 app.register_blueprint(portfolio_blueprint, url_prefix='/admin/portfolio')
 app.register_blueprint(experience_blueprint, url_prefix='/admin/experience')
 
+app.jinja_env.globals.update(clever_function=clever_function)
+
+app.jinja_env.globals.update(number_to_string=number_to_string)
+
 
 engine = create_engine(app.config['SQLALCHEMY_DATABASE_URI'])
 Base.metadata.bind = engine
@@ -46,6 +50,7 @@ def home():
                            education=get_education(),
                            skills=get_skills(),
                            portfolio=get_portfoilo(),
+                           experience=get_experience(),
                            test=user_configuration())
 
 
@@ -73,22 +78,6 @@ def logout():
 @app.route('/admin')
 def admin():
     if 'username' in login_session:
-        return render_template('admin.html')
+        return render_template('admin.html', test=user_configuration())
     else:
         return redirect(url_for('login'))
-
-
-def get_education():
-    return session.query(Education).all()
-
-
-def get_skills():
-    return session.query(Skills).all()
-
-
-def get_skill(skill_id):
-    return session.query(Skills).filter_by(id=skill_id).one()
-
-
-def get_portfoilo():
-    return session.query(Portfolio).all()

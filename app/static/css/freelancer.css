@@ -523,3 +523,9 @@ fieldset[disabled] .btn-success.active {
   margin-top: 20px;
 
 }
+
+.outer {
+  
+  margin: 25px;
+  padding: 10px;
+}

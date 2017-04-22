@@ -1,0 +1,74 @@
+ {% extends 'admin.html' %} {% block content %} {% if 'username' in session %}
+
+
+<div class="container skills">
+    <div class="row text-center">
+        {% if type == 'skills' %}
+        <h1>Technical Skills</h1> {% elif type == 'portfolio' %}
+        <h1>Portfolio Projects</h1> {% elif type == 'education' %}
+        <h1>Education</h1> {% elif type == 'experience' %}
+        <h1>Work Experience</h1> {% endif %}
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+
+            <table class="table">
+                <thead class="thead-inverse">
+                    <tr>
+                        {% if type == 'skills' %}
+                        <th>Technical Skills</th> {% elif type == 'portfolio' %}
+                        <th>Portfolio Projects</th> {% elif type == 'education' %}
+                        <th>Education</th> {% elif type == 'experience' %}
+                        <th>Work Experience</th> {% endif %}
+
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if type == 'skills' %} {% for tech in skills%}
+                    <tr>
+
+                        <td>{{ tech.skill}}</td>
+                        <td><a href="{{ url_for('skill.edit_skill', skill_id=tech.id) }}" class="btn btn-warning actions">Edit</a>
+                            <a href="{{ url_for('skill.delete_skill', skill_id=tech.id) }}" class="btn btn-danger">Delete</button></td>
+                </tr>
+                {% endfor %}
+                {% elif type == 'portfolio'%} {% for port in portfolio%}
+                <tr>
+                    <td>{{ port.title}}</td>
+                    <td><a href="{{ url_for('portfolio.edit_portfolio', portfolio_id=port.id) }}" class="btn btn-warning actions">Edit</a>
+                            <a href="{{ url_for('portfolio.delete_portfolio', portfolio_id=port.id) }}" class="btn btn-danger">Delete</button></td>
+                </tr>
+                {% endfor %}
+                {% elif type == 'education' %}
+                {% for school in education%}
+                <tr>
+                    <td>{{ school.school}}</td>
+                    <td><a href="{{ url_for('education.edit_education', education_id=school.id) }}" class="btn btn-warning actions">Edit</a>
+                            <a href="{{ url_for('education.delete_education', education_id=school.id) }}" class="btn btn-danger">Delete</button></td>
+                </tr>
+                {% endfor %}
+                {% elif type == 'experience' %}
+                {% for job in experience %}
+                <tr>
+                    <td>{{ school.school}}</td>
+                    <td><a href="{{ url_for('job.edit_education', experience_id=job.id) }}" class="btn btn-warning actions">Edit</a>
+                            <a href="{{ url_for('job.delete_education', experience_id=job.id) }}" class="btn btn-danger">Delete</button></td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+
+
+        </div>
+    </div>
+
+
+
+
+    {% else %}
+    <h1>You be here. Your IP has been logged</h1> {% endif %}
+</div>
+
+{% endblock %}
