@@ -51,7 +51,7 @@ def home():
                            skills=get_skills(),
                            portfolio=get_portfoilo(),
                            experience=get_experience(),
-                           test=user_configuration())
+                           data=get_data())
 
 
 # route for handling the login page logic

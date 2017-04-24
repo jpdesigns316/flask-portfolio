@@ -65,7 +65,7 @@
                     <p>Type three points about your portfolio at this school</p>
                     <fieldset class="form-group">
                         <label for="inputDescription" class="control-label">Desciption:</label>
-                        <input type="test" class="form-control" name="description" value="{{portfolio.description}}" rows="5">
+                        <textarea type="text" class="form-control" name="description" {% if type=='edit' %} value="{{portfolio.description}}" {% endif %} rows="5"></textarea>
 
                     </fieldset>
                 </div>

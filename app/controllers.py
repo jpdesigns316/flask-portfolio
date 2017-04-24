@@ -1,7 +1,7 @@
 from flask import Flask
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from models import Base, Skills, Portfolio, Education, Work, Certication
+from models import Base, Skills, Portfolio, Education, Work, Certication, Config
 
 
 app = Flask(__name__)
@@ -40,6 +40,10 @@ def get_experience():
 
 def get_skill(skills_id):
     return session.query(Skill).filter_by(id=skills_id).one()
+
+
+def get_data():
+    return session.query(Config).all()
 
 
 def get_portfoilo():

@@ -1,7 +1,12 @@
-from sqlalchemy import Column, ForeignKey, Integer, String
+from flask import Flask
+from sqlalchemy import Column, ForeignKey, Integer, String, Text
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
+
+app = Flask(__name__)
+app.config.from_object('config')
+app.secret_key = app.config['SECRET_KEY']
 
 Base = declarative_base()
 
@@ -77,7 +82,7 @@ class Portfolio(Base):
     github_url = Column(String, nullable=False)
     description = Column(String)
     client = Column(String, nullable=False)
-    created_month = Column(Integer, nullable=False)
+    created_month = Column(String, nullable=False)
     created_year = Column(Integer, nullable=False)
     service = Column(String, nullable=False)
     image = Column(String, nullable=False)
@@ -185,7 +190,26 @@ class Certication(Base):
         self.certification_url = certification_url
 
 
-engine = create_engine('sqlite:///website.db')
+class Config(Base):
+    __tablename__ = 'config'
 
+    id = Column(Integer, primary_key=True)
+    meta_value = Column(String, nullable=False)
+    meta_key = Column(Text, nullable=False)
+
+    def __init__(self, meta_key, meta_value):
+        self.id = id
+        self.meta_key = meta_key
+        self.meta_value = meta_value
+
+    def serialize(self):
+        return{
+            'id': id,
+            'meta_key': meta_key,
+            'meta_value': meta_value
+        }
+
+
+engine = create_engine(app.config['SQLALCHEMY_DATABASE_URI'])
 
 Base.metadata.create_all(engine)

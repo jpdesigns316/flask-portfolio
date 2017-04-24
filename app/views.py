@@ -149,9 +149,7 @@ def add_education():
                            degree=request.form['degree'],
                            major=request.form['major'],
                            location=request.form['location'],
-                           start_month=request.form['start_month'],
                            start_year=request.form['start_year'],
-                           end_month=request.form['end_month'],
                            end_year=request.form['end_year'],
                            bullet_1=request.form['bullet_1'],
                            bullet_2=request.form['bullet_2'],
@@ -176,9 +174,7 @@ def edit_education(education_id):
         school.bullet_1 = request.form['bullet_1']
         school.bullet_2 = request.form['bullet_2']
         school.bullet_3 = request.form['bullet_3']
-        school.start_month = request.form['start_month']
         school.start_year = request.form['start_year']
-        school.end_month = request.form['end_month']
         school.end_year = request.form['end_year']
 
         session.add(school)
