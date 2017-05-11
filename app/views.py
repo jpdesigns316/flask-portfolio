@@ -9,6 +9,7 @@ from sqlalchemy.orm import sessionmaker
 from models import Base, Skills, Portfolio, Education, Work
 from flask import session as login_session
 from controllers import *
+from werkzeug import secure_filename
 import random
 import string
 
@@ -82,6 +83,8 @@ def portfolio():
 def add_portfolio():
     if request.method == 'POST':
         portfolio = session.query(Portfolio).all()
+        image = request.form['image']
+        image.save(secure_filename(image.filename))
         # Creating a books object to add to the databse.
         port = Portfolio(title=request.form['title'],
                          skills_used=request.form['skills_used'],
@@ -92,7 +95,7 @@ def add_portfolio():
                          created_month=request.form['created_month'],
                          created_year=request.form['created_year'],
                          service=request.form['service'],
-                         image=request.form['image'])
+                         image=image)
         session.add(port)
         session.commit()
         return redirect(url_for('home'))

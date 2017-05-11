@@ -31,16 +31,22 @@ app.register_blueprint(education_blueprint, url_prefix='/admin/education')
 app.register_blueprint(portfolio_blueprint, url_prefix='/admin/portfolio')
 app.register_blueprint(experience_blueprint, url_prefix='/admin/experience')
 
+app.jinja_env.globals.update(config=config)
 app.jinja_env.globals.update(clever_function=clever_function)
-
-app.jinja_env.globals.update(number_to_string=number_to_string)
-
 
 engine = create_engine(app.config['SQLALCHEMY_DATABASE_URI'])
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
+
+
+@app.context_processor
+def utility_processor():
+    def config(meta_key):
+        key = session.query(Config).filter_by(meta_key=meta_key).one()
+        return key.meta_vlue
+    return dict(config=config)
 
 
 @app.route('/')
@@ -50,8 +56,7 @@ def home():
                            education=get_education(),
                            skills=get_skills(),
                            portfolio=get_portfoilo(),
-                           experience=get_experience(),
-                           data=get_data())
+                           experience=get_experience())
 
 
 # route for handling the login page logic
@@ -78,6 +83,6 @@ def logout():
 @app.route('/admin')
 def admin():
     if 'username' in login_session:
-        return render_template('admin.html', test=user_configuration())
+        return render_template('adminPanel.html', test=user_configuration())
     else:
         return redirect(url_for('login'))

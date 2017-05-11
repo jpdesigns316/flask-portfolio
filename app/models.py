@@ -1,5 +1,6 @@
 from flask import Flask
-from sqlalchemy import Column, ForeignKey, Integer, String, Text
+from sqlalchemy import Column, ForeignKey, Integer, String, Text,  \
+    UniqueConstraint
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
@@ -194,8 +195,8 @@ class Config(Base):
     __tablename__ = 'config'
 
     id = Column(Integer, primary_key=True)
-    meta_value = Column(String, nullable=False)
-    meta_key = Column(Text, nullable=False)
+    meta_key = Column(String, unique=True)
+    meta_vlue = Column(Text, nullable=False)
 
     def __init__(self, meta_key, meta_value):
         self.id = id

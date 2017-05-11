@@ -3,28 +3,28 @@ startDOCTYPE html>
 
 <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <title>JP Designs 316</title>
+  <title>JP Designs 316</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.css">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
-    <!-- Theme CSS -->
+  <!-- Bootstrap Core CSS -->
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.css">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+  <!-- Theme CSS -->
 
-    <link rel="stylesheet" href="{{url_for('static', filename='css/freelancer.min.css')}}">
-    <!-- Custom Fonts -->
+  <link rel="stylesheet" href="{{url_for('static', filename='css/freelancer.min.css')}}">
+  <!-- Custom Fonts -->
 
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
@@ -35,269 +35,268 @@ startDOCTYPE html>
 
 
 
-    <!-- Navigation -->
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+  <!-- Navigation -->
+  <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header page-scroll">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="#page-top">JP Designs 316}</a>
-            </div>
+        <a class="navbar-brand" href="#page-top">JP Designs 316</a>
+      </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#resume">Resume</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#portfolio">Portfolio</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#about">About</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#contact">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            {% if 'username' in session %}
-            <a href="{{ url_for('admin')}}" class="btn btn-warning">Admin</a>
-            <a href="{{ url_for('logout')}}" class="btn btn-warning">Log out</a> {% endif %}
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
-
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <img class="img-circle img-responsive" src="../static/image/jonathan.jpg" alt="">
-                    <div class="intro-text">
-                        <span class="name">Jonathan D Peterson</span>
-                        <hr class="star-light">
-                        <span class="skills">Full Stack Web Developer</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- About Section -->
-    <section class="success" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>About</h2>
-                    <hr class="star-light">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <p>I am a person who doesn't like to do the ordinary but wants to excel at any project that I am doing. I had a teacher once tell me, "You get out of something as much as you put in". This is why I don't like to do the bare minimum with
-                        things but want to provide the best I can. I'm an avid learner and when I don't know how to do things, I go and discover how to do it.</p>
-
-                    <p>I can do Full Stack Web Design, Graphic Desisgn or Programmings. Recently I have started to try out some Virtual Reality and working work Unity3D and Google VR SDK</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="portfolio">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>Portfolio</h2>
-                    <hr class="star-primary">
-                </div>
-            </div>
-            <div class="row">
-                {% set counter = 1 -%} {% for port in portfolio %}
-                <div class="col-sm-4 portfolio-item">
-                    <a href="#portModel{{counter}}" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                {{ port.title }}
-                            </div>
-                        </div>
-                        <img src="{{port.image}}" class="img-responsive" alt="">
-                    </a>
-                </div>
-
-
-                {% set counter = counter + 1 %} {% endfor %}
-            </div>
-        </div>
-
-    </section>
-
-
-
-    <section id="resume">
-        <div class="container text-center ">
-            <div>
-                <h2>Skills</h2>
-                <hr class="star-primary">
-                <div class="row">
-                    {% for skill in skills %}
-                    <div class="col-md-2">
-                        {{ skill.skill}} {% if skill.level == 1 %} ●○○ {% elif skill.level == 2 %} ●●○ {% else %} ●●● {% endif%}
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-    </section>
-    <section>
-        <div class="container">
-            <h2 class="text-center">Education</h2>
-            <div>
-                <hr class="star-primary"> {% for school in education %}
-                <div class="row education">
-                    <div class="col-md-9">
-                        {{ school.school}} - {{ school.location}}<br> {{ school.degree }} in {{ school.major }} <br> {% if bullet_1 is not none %} • {{ school.bullet_1 }} <br> {% endif %} {% if bullet_2 is not none %} • {{ school.bullet_2 }} {% endif
-                        %} {% if bullet_3 == '' %} • {{ school.bullet_3 }} <br>{% endif %}
-                    </div>
-                    <div class="col-md-3"> {{ school.start_year }} - {{ school.end_year }}</div>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-
-    </section>
-    <section>
-        <div class="container">
-            <h2 class="text-center">Work Experience</h2>
-            <div>
-                <hr class="star-primary"> {% for job in experience %}
-                <div class="row education">
-                    <div class="col-md-9">
-                        <strong>{{ job.title}}</strong> - <em>{{ job.location}}</em><br> {{ job_title }} <br> {% if bullet_1 == '' %} • {{ job.bullet_1 }} <br> {% endif %} {% if bullet_2 == '' %} • {{ job.bullet_2 }} {% endif %} {% if bullet_3 == '' %}
-                        • {{ job.bullet_3 }} <br>{% endif %}
-                    </div>
-                    <div class="col-md-3"> {{ number_to_string( job.start_month ) }} {{ job.start_year }} - {{ number_to_string( job.end_month ) }}{{ job.end_year }}</div>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-
-    </section>
-
-
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>Contact Me</h2>
-                    <hr class="star-primary">
-                    <p>You can contact me at jonathan@jpdesigns316.com</p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-
-
-
-
-    <!-- Footer -->
-    <footer class="text-center">
-        <div class="footer-above">
-            <div class="container">
-                <div class="row">
-                    <div class="footer-col col-md-4">
-                        <h3>Location</h3>
-                        <p>Las Vegas</p>
-                    </div>
-                    <div class="footer-col col-md-4">
-                        <h3>Around the Web</h3>
-                        <ul class="list-inline">
-                            <li>
-                                <a href="https://www.linkedin.com/in/jpdesigns316" class="btn-social btn-outline" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <div class="footer-below">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        Copyright &copy; JP Designs 316 2016-2017
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-
-
-    <!-- Modal -->
-    {% set counter = 1 -%} {% for port in portfolio %}
-    <div class="portfolio-modal modal fade" id="portModel{{counter}}" tabindex="-1" role="dialog" aria-hidden="true">
-
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
-                </div>
-
-            </div>
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <h2>{{port.title}}</h2>
-                            <hr class="star-primary">
-                            <img src="{{ port.image }}" class="img-responsive img-centered" alt="">
-                            <p>{{ port.skills_used}}</p>
-
-                            <p>Demo - <a href="{{ port.demo_url}}" target="_blank">CLICK HERE</a><br> Github - <a href="{{ port.github_url}}" target="_blank">CLICK HERE</a>
-                                <p>{{ port.description}}</p>
-
-                                <ul class="list-inline item-details">
-                                    <li>Client:
-                                        <strong>{{port.client}}
-                       </strong>
-                                    </li>
-                                    <li>Date:
-                                        <strong>{{ number_to_string( port.created_month) }} {{ port.created_year }}
-                       </strong>
-                                    </li>
-                                    <li>Service:
-                                        <strong>{{port.service}}
-                       </strong>
-                                    </li>
-                                </ul>
-                                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="hidden">
+            <a href="#page-top"></a>
+          </li>
+          <li class="page-scroll">
+            <a href="#resume">Resume</a>
+          </li>
+          <li class="page-scroll">
+            <a href="#portfolio">Portfolio</a>
+          </li>
+          <li class="page-scroll">
+            <a href="#about">About</a>
+          </li>
+          <li class="page-scroll">
+            <a href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+      {% if 'username' in session %}
+      <a href="{{ url_for('admin')}}" class="btn btn-warning">Admin</a>
+      <a href="{{ url_for('logout')}}" class="btn btn-warning">Log out</a> {% endif %}
+      <!-- /.navbar-collapse -->
     </div>
-    {% set counter = counter + 1 %} {% endfor %}
+    <!-- /.container-fluid -->
+  </nav>
 
-    <!-- jQuery -->
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <img class="img-circle img-responsive" src="../static/image/jonathan.jpg" alt="">
+          <div class="intro-text">
 
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+            <span class="name">{{ config('name') }}</span>
+            <hr class="star-light">
+            <span class="skills">{{ config('title') }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- About Section -->
+  <section class="success" id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2>About</h2>
+          <hr class="star-light">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          <p>{{ config('about') }}</p>
+          <p>{{ config('about2') }}</p>
+        </div>
 
-    <script src="{{ url_for('static', filename='js/freelancer.min.js') }}"></script>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2>Portfolio</h2>
+          <hr class="star-primary">
+        </div>
+      </div>
+      <div class="row">
+        {% set counter = 1 -%} {% for port in portfolio %}
+        <div class="col-sm-4 portfolio-item">
+          <a href="#portModel{{counter}}" class="portfolio-link" data-toggle="modal">
+            <div class="caption">
+              <div class="caption-content">
+                {{ port.title }}
+              </div>
+            </div>
+            <img src="{{port.image}}" class="img-responsive" alt="">
+          </a>
+        </div>
+
+
+        {% set counter = counter + 1 %} {% endfor %}
+      </div>
+    </div>
+
+  </section>
+
+
+
+  <section id="resume">
+    <div class="container text-center ">
+      <div>
+        <h2>Skills</h2>
+        <hr class="star-primary">
+        <div class="row">
+          {% for skill in skills %}
+          <div class="col-md-2">
+            {{ skill.skill}} {% if skill.level == 1 %} ●○○ {% elif skill.level == 2 %} ●●○ {% else %} ●●● {% endif%}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+  </section>
+  <section>
+    <div class="container">
+      <h2 class="text-center">Education</h2>
+      <div>
+        <hr class="star-primary"> {% for school in education %}
+        <div class="row education">
+          <div class="col-md-9">
+            {{ school.school}} - {{ school.location}}<br> {{ school.degree }} in {{ school.major }} <br> {% if bullet_1 is not none %} • {{ school.bullet_1 }} <br> {% endif %} {% if bullet_2 is not none %} • {{ school.bullet_2 }} {% endif %} {% if bullet_3
+            == '' %} • {{ school.bullet_3 }} <br>{% endif %}
+          </div>
+          <div class="col-md-3"> {{ school.start_year }} - {{ school.end_year }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+  </section>
+  <section>
+    <div class="container">
+      <h2 class="text-center">Work Experience</h2>
+      <div>
+        <hr class="star-primary"> {% for job in experience %}
+        <div class="row education">
+          <div class="col-md-9">
+            <strong>{{ job.title}}</strong> - <em>{{ job.location}}</em><br> {{ job_title }} <br> {% if bullet_1 == '' %} • {{ job.bullet_1 }} <br> {% endif %} {% if bullet_2 == '' %} • {{ job.bullet_2 }} {% endif %} {% if bullet_3 == '' %} • {{ job.bullet_3
+            }} <br>{% endif %}
+          </div>
+          <div class="col-md-3"> {{ number_to_string( job.start_month ) }} {{ job.start_year }} - {{ number_to_string( job.end_month ) }}{{ job.end_year }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+  </section>
+
+
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2>Contact Me</h2>
+          <hr class="star-primary">
+          <p>{{ config('email')}}</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+
+
+  <!-- Footer -->
+  <footer class="text-center">
+    <div class="footer-above">
+      <div class="container">
+        <div class="row">
+          <div class="footer-col col-md-4">
+            <h3>Location</h3>
+            <p>{{ config('city')}}, {{ config('state')}}</p>
+          </div>
+          <div class="footer-col col-md-4">
+            <h3>Around the Web</h3>
+            <ul class="list-inline">
+              <li>
+                <a href="https://www.linkedin.com/in/{{ config('linkedin')}}" class="btn-social btn-outline" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="footer-below">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            Copyright &copy; JP Designs 316 2016-2017
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+  <!-- Modal -->
+  {% set counter = 1 -%} {% for port in portfolio %}
+  <div class="portfolio-modal modal fade" id="portModel{{counter}}" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <div class="modal-content">
+      <div class="close-modal" data-dismiss="modal">
+        <div class="lr">
+          <div class="rl">
+          </div>
+        </div>
+
+      </div>
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-8 col-lg-offset-2">
+            <div class="modal-body">
+              <h2>{{port.title}}</h2>
+              <hr class="star-primary">
+              <img src="{{ port.image }}" class="img-responsive img-centered" alt="">
+              <p>{{ port.skills_used}}</p>
+
+              <p>Demo - <a href="{{ port.demo_url}}" target="_blank">CLICK HERE</a><br> Github - <a href="{{ port.github_url}}" target="_blank">CLICK HERE</a>
+                <p>{{ port.description}}</p>
+
+                <ul class="list-inline item-details">
+                  <li>Client:
+                    <strong>{{port.client}}
+                       </strong>
+                  </li>
+                  <li>Date:
+                    <strong>{{ number_to_string( port.created_month) }} {{ port.created_year }}
+                       </strong>
+                  </li>
+                  <li>Service:
+                    <strong>{{port.service}}
+                       </strong>
+                  </li>
+                </ul>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% set counter = counter + 1 %} {% endfor %}
+
+  <!-- jQuery -->
+
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  <!-- Bootstrap Core JavaScript -->
+  <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+  <script src="{{ url_for('static', filename='js/freelancer.min.js') }}"></script>
 
 </html>
