@@ -1,19 +1,32 @@
 {% extends 'admin.html' %} {% block content %}
 <section>
-  <div class="container">
-    <div class="col-md-6 col-md-offset-4 panel panel-default">
+  <div class="container skills">
 
-      <h1 class="text-center">Add A Skill</h1>
-      <div class="col-md-6 col-md-offset-4">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
 
 
-        <form action="" method="post" class="form-inline">
-          <label for="">Show Skills</label>
-          <input type="checkbox">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Username</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for key in config %}
+            <tr>
+              <td>{{ key.meta_key}}</td>
+              <td><input type="text" class="form-control" name="meta_vlue" value="{{ key.meta_vlue}}"></td>
+
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
       </div>
-      </form>
     </div>
-  </div>
   </div>
 
 </section>

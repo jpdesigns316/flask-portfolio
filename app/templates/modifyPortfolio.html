@@ -1,95 +1,109 @@
 {% extends 'admin.html' %} {% block content %} {% if 'username' in session %}
 
 <div class="container skills">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3  panel portfolio">
-            <form method="post" class="form-horizontal" action="#">
-                {% if type == 'add' %}
-                <legend>Add Portfolio</legend> {% else %}
-                <legend>Edit Portfolio</legend> {% endif %}
-                <div class="inner">
-                    <div>
-                        <fieldset class="form-group">
-                            <label>Title:</label>
-                            <input type="text" class="form-control" name="title" {% if type=='edit' %} value="{{ portfolio.title}}" {% endif %}>
-                        </fieldset>
-                    </div>
-                    <div>
-                        <fieldset class="form-group">
-                            <label for="">Skills Used</label>
-                            <input type="text" class="form-control" name="skills_used" {% if type=='edit' %} value="{{ portfolio.skills_used}}" {% endif %}>
-                    </div>
-                    <div>
-                        <fieldset class="form-group">
-                            <label>Demo URL:</label>
-                            <input type="text" class="form-control" name="demo_url" {% if type=='edit' %} value="{{ portfolio.demo_url}}" {% endif %}>
-                        </fieldset>
-                    </div>
-                    <div>
-                        <fieldset class="form-group">
-                            <label>GitHub URL:</label>
-                            <input type="text" class="form-control" name="github_url" {% if type=='edit' %} value="{{ portfolio.github_url}}" {% endif %}>
-                        </fieldset>
-                    </div>
-                    <div>
-                        <fieldset class="form-group">
-                            <label>Client:</label>
-                            <input type="text" class="form-control" name="client" {% if type=='edit' %} value="{{ portfolio.client}}" {% endif %}>
-                        </fieldset>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-5">
-                            <fieldset class="form-group">
-                                <label for="">Created</label>
-                                <select name="created_month" class="form-control">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3  panel portfolio">
+      <form method="post" class="form-horizontal" action="#">
+        {% if type == 'add' %}
+        <legend>Add Portfolio</legend> {% else %}
+        <legend>Edit Portfolio</legend> {% endif %}
+        <div class="inner">
+          <div>
+            <fieldset class="form-group">
+              <label>Title:</label>
+              <input type="text" class="form-control" name="title" {% if type=='edit' %} value="{{ portfolio.title}}" {% endif %}>
+            </fieldset>
+          </div>
+          <div>
+            <fieldset class="form-group">
+              <label for="">Skills Used</label>
+              <input type="text" class="form-control" name="skills_used" {% if type=='edit' %} value="{{ portfolio.skills_used}}" {% endif %}>
+          </div>
+          <div>
+            <fieldset class="form-group">
+              <label>Demo URL:</label>
+              <input type="text" class="form-control" name="demo_url" {% if type=='edit' %} value="{{ portfolio.demo_url}}" {% endif %}>
+            </fieldset>
+          </div>
+          <div>
+            <fieldset class="form-group">
+              <label>GitHub URL:</label>
+              <input type="text" class="form-control" name="github_url" {% if type=='edit' %} value="{{ portfolio.github_url}}" {% endif %}>
+            </fieldset>
+          </div>
+          <div>
+            <fieldset class="form-group">
+              <label>Client:</label>
+              <input type="text" class="form-control" name="client" {% if type=='edit' %} value="{{ portfolio.client}}" {% endif %}>
+            </fieldset>
+          </div>
+          <div class="row">
+            <div class="col-md-5">
+              <fieldset class="form-group">
+                <label for="">Created</label>
+                <select name="created_month" class="form-control">
                                   {% for month in range(1,13) %}
                                     <option {% if type == 'edit' %}{% if portfolio.created_month  == 1 %} selected {% endif %} {% endif %}value="{{ month }}">{{ clever_function( month )}}</option>
                                 {% endfor %}
                                 </select>
-                                <select name="created_year" class="form-control">
+                <select name="created_year" class="form-control">
                                       {% for year in range(2018,1900,-1)%}
 
                                         <option value="{{ year }}" {% if type=='edit' %}  {% if portfolio.created_year == year %} selected {% endif %} {% endif %}> {{ year }}</option>
                                       {% endfor %}
                                     </select>
-                            </fieldset>
-                        </div>
-                    </div>
-                    <div>
-                        <fieldset class="form-group">
-                            <label>Type of project (ie Web Development):</label>
-                            <input type="text" class="form-control" name="service" {% if type=='edit' %} value="{{ portfolio.service}}" {% endif %}>
-                        </fieldset>
-                    </div>
+              </fieldset>
+            </div>
+          </div>
+          <div>
+            <fieldset class="form-group">
+              <label>Type of project (ie Web Development):</label>
+              <input type="text" class="form-control" name="service" {% if type=='edit' %} value="{{ portfolio.service}}" {% endif %}>
+            </fieldset>
+          </div>
 
-                    <p>Type three points about your portfolio at this school</p>
-                    <fieldset class="form-group">
-                        <label for="inputDescription" class="control-label">Desciption:</label>
-                        <textarea type="text" class="form-control" name="description" {% if type=='edit' %} value="{{portfolio.description}}" {% endif %} rows="5"></textarea>
+          <p>Type three points about your portfolio at this school</p>
+          <fieldset class="form-group">
+            <label for="inputDescription" class="control-label">Desciption:</label>
+            <textarea type="text" class="form-control" name="description" {% if type=='edit' %} value="{{portfolio.description}}" {% endif %} rows="5"></textarea>
 
-                    </fieldset>
-                </div>
-                <div>
-                    <fieldset class="form-group">
-                        <label>Image URL:</label>
-                        <input type="text" class="form-control" name="image" {% if type=='edit' %} value="{{ portfolio.image}}" {% endif %}>
-                    </fieldset>
-                </div>
-
-                <div>
-                    <div class="col-md-6">
-
-                    </div>
-                    <div class="col-md-6">
-                        <input type="submit" class="btn btn-primary" value="Submit">
-                    </div>
-                </div>
+          </fieldset>
         </div>
-        </form>
+        <div>
+          <fieldset class="form-group">
+            <label>Image URL:</label>
+            <input type="file" id="file-picke" accept="image/*" class="form-control" name="image" {% if type=='edit' %} value="{{ portfolio.image}}" {% endif %}>
+          </fieldset>
+        </div>
+        <div>
+          <div class="col-md-6">
+
+          </div>
+          <div class="col-md-6">
+            <input type="submit" class="btn btn-primary" value="Submit">
+          </div>
+        </div>
     </div>
+    </form>
+  </div>
 </div>
 </div>{% else %}
 <h1>You be here. Your IP has been logged</h1> {% endif %}
 </div>
+<script>
+  $("#file-picker").change(function() {
+    var input = document.getElementById('file-picker');
+    for (var i = 0; i < input.files.length; i++) {
+      //koala.jpg, koala.JPG substring(index) lastIndexOf('a') koala.1.jpg
+      var ext = input.files[i].name.substring(input.files[i].name.lastIndexOf('.') + 1).toLowerCase()
+      if ((ext == 'jpg') || (ext == 'png')) {
+        $("#msg").text("Files are supported")
+      } else {
+        $("#msg").text("Files are NOT supported")
+        document.getElementById("file-picker").value = "";
+      }
+    }
+  });
 
+</script>
 {% endblock %}

@@ -1,88 +1,88 @@
 {% extends 'admin.html' %} {% block content %} {% if 'username' in session %}
 
 <div class="container skills">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3 panel education">
-            <form method="post" class="form-horizontal" action="#">
-                <legend>Add Education</legend>
-                <div class="inner">
-                    <div>
-                        <fieldset <fieldset class="form-group">
-                            <label for="">School</label>
-                            <input type="text" class="form-control" name="school" {% if type=='edit' %} value="{{ education.school}}" {% endif %}>
-                        </fieldset>
-                    </div>
-                    <div>
-                        <fieldset class="form-group">
-                            <label for="">Location:</label>
-                            <input type="text" class="form-control" name="location" {% if type=='edit' %} value="{{ education.location}}" {% endif %}>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 panel education">
+      <form method="post" class="form-horizontal" action="#">
+        <legend>Add Education</legend>
+        <div class="inner">
+          <div>
+            <fieldset class="form-group">
+              <label for="">School</label>
+              <input type="text" class="form-control" name="school" {% if type=='edit' %} value="{{ education.school}}" {% endif %}>
+            </fieldset>
+          </div>
+          <div>
+            <fieldset class="form-group">
+              <label for="">Location:</label>
+              <input type="text" class="form-control" name="location" {% if type=='edit' %} value="{{ education.location}}" {% endif %}>
 
-                    </div>
-                    <div>
-                        <fieldset class="form-group">
-                            <label for="">Degree</label>
-                            <input type="text" class="form-control" name="degree" {% if type=='edit' %} value="{{ education.degree}}" {% endif %}>
+          </div>
+          <div>
+            <fieldset class="form-group">
+              <label for="">Degree</label>
+              <input type="text" class="form-control" name="degree" {% if type=='edit' %} value="{{ education.degree}}" {% endif %}>
 
-                    </div>
-                    <div>
-                        <fieldset class="form-group">
-                            <label for="">Field of Study</label>
-                            <input type="text" class="form-control" name="major" {% if type=='edit' %} value="{{ education.major}}" {% endif %}>
-                        </fieldset>
-                        <div class="row">
-                            <div class="col-md-5">
-                                <fieldset class="form-group">
-                                    <label for="">From Year</label>
-                                    <select name="start_year" class="form-control">
+          </div>
+          <div>
+            <fieldset class="form-group">
+              <label for="">Field of Study</label>
+              <input type="text" class="form-control" name="major" {% if type=='edit' %} value="{{ education.major}}" {% endif %}>
+            </fieldset>
+            <div class="row">
+              <div class="col-md-5">
+                <fieldset class="form-group">
+                  <label for="">From Year</label>
+                  <select name="start_year" class="form-control">
                                       {% for year in range(2018,1900,-1)%}
 
                                         <option value="{{ year }}" {% if type=='edit' %}  }{% if education.start_year == year %} selected {% endif %} {% endif %}> {{ year }}</option>
                                       {% endfor %}
                                     </select>
-                                </fieldset>
-                            </div>
-                            <div class="col-md-2">
+                </fieldset>
+              </div>
+              <div class="col-md-2">
 
-                            </div>
-                            <div class="col-md-5">
-                                <fieldset class="form-group">
-                                    <label for="">From Year</label>
-                                    <select name="end_year" class="form-control">
+              </div>
+              <div class="col-md-5">
+                <fieldset class="form-group">
+                  <label for="">From Year</label>
+                  <select name="end_year" class="form-control">
                                       {% for year in range(2018,1900,-1)%}
 
                                         <option value="{{ year }}" {% if type=='edit' %}  }{% if education.end_year == year %} selected {% endif %} {% endif %}> {{ year }}</option>
                                       {% endfor %}
                                     </select>
-                                </fieldset>
-                            </div>
-                        </div>
-                        <p>Type three points about your education at this school</p>
-                        <fieldset class="form-group">
-                            <label for="">Bullet Point</label>
-                            <input type="text" name="bullet_1" class="form-control" {% if type=='edit' %} value="{{ education.bullet_1}}" {% endif %}>
-                        </fieldset>
-                        <fieldset class="form-group">
-                            <label for="">Bullet Point</label>
-                            <input type="text" name="bullet_2" class="form-control" {% if type=='edit' %} value="{{ education.bullet_2}}" {% endif %}>
-                        </fieldset>
-                        <fieldset class="form-group">
-                            <label for="">Bullet Point</label>
-                            <input type="text" name="bullet_3" class="form-control" {% if type=='edit' %} value="{{ education.bullet_3}}" {% endif %}>
-                        </fieldset>
-                    </div>
+                </fieldset>
+              </div>
+            </div>
+            <p>Type three points about your education at this school</p>
+            <fieldset class="form-group">
+              <label for="">Bullet Point</label>
+              <input type="text" name="bullet_1" class="form-control" {% if type=='edit' %} value="{{ education.bullet_1}}" {% endif %}>
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="">Bullet Point</label>
+              <input type="text" name="bullet_2" class="form-control" {% if type=='edit' %} value="{{ education.bullet_2}}" {% endif %}>
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="">Bullet Point</label>
+              <input type="text" name="bullet_3" class="form-control" {% if type=='edit' %} value="{{ education.bullet_3}}" {% endif %}>
+            </fieldset>
+          </div>
 
-                    <div>
-                        <div class="col-md-6">
+          <div>
+            <div class="col-md-6">
 
-                        </div>
-                        <div class="col-md-6">
-                            <input type="submit" class="btn btn-primary" value="Submit">
-                        </div>
-                    </div>
-                </div>
-            </form>
+            </div>
+            <div class="col-md-6">
+              <input type="submit" class="btn btn-primary" value="Submit">
+            </div>
+          </div>
         </div>
+      </form>
     </div>
+  </div>
 </div>{% else %}
 <h1>You be here. Your IP has been logged</h1> {% endif %}
 </div>

@@ -39,10 +39,10 @@ def get_experience():
 
 
 def get_skill(skills_id):
-    return session.query(Skill).filter_by(id=skills_id).one()
+    return session.query(Skills).filter_by(id=skills_id).one()
 
 
-def get_data():
+def get_config():
     return session.query(Config).all()
 
 

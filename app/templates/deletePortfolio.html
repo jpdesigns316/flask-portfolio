@@ -6,10 +6,10 @@
 </script>
 <div class="container">
   <div class="col-md-12 form-back">
-    <form action="{{url_for('skill.delete_skill',skill_id=skill.id)}}" method="post">
-      <legend>Deleting {{skill.skill}}</legend>
+    <form action="{{url_for('portfolio.delete_portfolio',portfolio_id=portfolio.id)}}" method="POST">
+      <legend>Deleting {{portfolio.title}}</legend>
       <fieldset>
-        <strong>WARNING:</strong> Deleting {{skill.skill}} will permanently delete form the database.
+        <strong>WARNING:</strong> Deleting {{portfolio.title}} will permanently delete form the database.
       </fieldset>
       <fieldset>
         <label class="confirm-delete">

@@ -9,7 +9,7 @@ from sqlalchemy.orm import sessionmaker
 from models import Base, Skills, Portfolio, Education, Work
 from flask import session as login_session
 from controllers import *
-from werkzeug import secure_filename
+import os
 import random
 import string
 
@@ -61,10 +61,12 @@ def edit_skill(skill_id):
         return render_template('editSkill.html', skill=edit_skill)
 
 
-@skills_blueprint.route('/delete/<skill_id>', methods=['GET', 'POST'])
+@skills_blueprint.route('/delete/<int:skill_id>', methods=['GET', 'POST'])
 def delete_skill(skill_id):
     if request.method == 'POST':
-        session.delete(get_skill(skill_id))
+        skill = session.query(Skills).filter_by(id=skill_id).one()
+
+        session.delete(skill)
         session.commit()
         return redirect(url_for('admin'))
     else:
@@ -83,9 +85,19 @@ def portfolio():
 def add_portfolio():
     if request.method == 'POST':
         portfolio = session.query(Portfolio).all()
-        image = request.form['image']
-        image.save(secure_filename(image.filename))
+        target = os.path.join(app.config['BASE_DIR'], 'static/image')
+
+        if not os.path.isdir(target):
+            os.mkdir(target)
+
+        for file in request.files.getlist("image"):
+            filename = file.filename
+            destination = "/".join([target, filename])
+            image = '../static/image/' + filename
+            file.save(destination)
+
         # Creating a books object to add to the databse.
+        image = '../static/image/' + request.form['image']
         port = Portfolio(title=request.form['title'],
                          skills_used=request.form['skills_used'],
                          demo_url=request.form['demo_url'],
@@ -98,12 +110,12 @@ def add_portfolio():
                          image=image)
         session.add(port)
         session.commit()
-        return redirect(url_for('home'))
+        return redirect(url_for('portfolio.portfolio'))
     else:
         return render_template('modifyPortfolio.html', type='add')
 
 
-@portfolio_blueprint.route('/edit/<portfolio_id>', methods=['GET', 'POST'])
+@portfolio_blueprint.route('/edit/<int:portfolio_id>', methods=['GET', 'POST'])
 def edit_portfolio(portfolio_id):
     port = session.query(Portfolio).filter_by(id=portfolio_id).one()
     if request.method == 'POST':
@@ -119,22 +131,21 @@ def edit_portfolio(portfolio_id):
         port.image = request.form['image']
         session.add(port)
         session.commit()
-        return redirect(url_for('portfolio.portfolio',
-                                portfolio=get_portfoilo()))
+        return redirect(url_for('portfolio.portfolio'))
     else:
         return render_template('modifyPortfolio.html', portfolio=port, type='edit')
 
 
-@portfolio_blueprint.route('/delete/<portfolio_id>',
-                           methods=['GET', 'POST'])
+@portfolio_blueprint.route('/delete/<int:portfolio_id>', methods=['GET', 'POST'])
 def delete_portfolio(portfolio_id):
-    if request.method == 'POST':
-        session.delete(get_portfolio(portfolio_id))
+    if request.method == 'GET':
+        port = session.query(Portfolio).filter_by(id=portfolio_id).one()
+
+        session.delete(port)
         session.commit()
-        return redirect(url_for('admin'))
+        return redirect(url_for('portfolio.portfolio'))
     else:
-        return render_template('deletePortfilio.html',
-                               portfolio=get_portfoilo())
+        return render_template('list.html', portfolio=get_portfoilo(), type='portfolio')
 
 # Education Routes
 
@@ -165,7 +176,7 @@ def add_education():
         return render_template('modifyEducation.html', type='add')
 
 
-@education_blueprint.route('/edit/<education_id>',
+@education_blueprint.route('/edit/<int:education_id>',
                            methods=['GET', 'POST'])
 def edit_education(education_id):
     school = session.query(Education).filter_by(id=education_id).one()
@@ -185,21 +196,19 @@ def edit_education(education_id):
         return redirect(url_for('education.education',
                                 education=get_education()))
     else:
-        return render_template('modifyEducation.html', education=school, type='edit')
+        return render_template('modifyEducation.html',
+                               education=school, type='edit')
 
 
-@education_blueprint.route('/delete/<education_id>',
-                           methods=['GET', 'POST'])
+@education_blueprint.route('/delete/<int:education_id>',
+                           methods=['GET'])
 def delete_education(education_id):
-    if request.method == 'POST':
+    if request.method == 'GET':
         session.delete(get_education(education_id))
         session.commit()
         return redirect(url_for('admin'))
     else:
-        return render_template('deleteEducation.html',
-                               education=get_education())
-
-
+        return render_template('list.html', education=get_education(), type='education')
 # Experience Routes Routes
 
 
@@ -226,7 +235,7 @@ def add_experience():
         return render_template('modifyExperience.html', type='add')
 
 
-@experience_blueprint.route('/admin/experience/edit/<experience_id>',
+@experience_blueprint.route('/admin/experience/edit/<int:experience_id>',
                             methods=['GET', 'POST'])
 def edit_experience(experience_id):
     experience = session.query(Work).filter_by(id=experience_id).one()
@@ -247,7 +256,7 @@ def edit_experience(experience_id):
         return render_template('modifyExperience.html', experience=experience, type="edit")
 
 
-@experience_blueprint.route('/admin/experience/delete/<experience_id>',
+@experience_blueprint.route('/admin/experience/delete/<int:experience_id>',
                             methods=['GET', 'POST'])
 def delete_experience(experience_id):
     if request.method == 'POST':

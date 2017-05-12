@@ -180,7 +180,7 @@ startDOCTYPE html>
             <strong>{{ job.title}}</strong> - <em>{{ job.location}}</em><br> {{ job_title }} <br> {% if bullet_1 == '' %} • {{ job.bullet_1 }} <br> {% endif %} {% if bullet_2 == '' %} • {{ job.bullet_2 }} {% endif %} {% if bullet_3 == '' %} • {{ job.bullet_3
             }} <br>{% endif %}
           </div>
-          <div class="col-md-3"> {{ number_to_string( job.start_month ) }} {{ job.start_year }} - {{ number_to_string( job.end_month ) }}{{ job.end_year }}</div>
+          <div class="col-md-3"> {{ clever_function( job.start_month ) }} {{ job.start_year }} - {{ clever_function( job.end_month ) }}{{ job.end_year }}</div>
         </div>
         {% endfor %}
       </div>
@@ -273,7 +273,7 @@ startDOCTYPE html>
                        </strong>
                   </li>
                   <li>Date:
-                    <strong>{{ number_to_string( port.created_month) }} {{ port.created_year }}
+                    <strong>{{ clever_function( port.created_month) }} {{ port.created_year }}
                        </strong>
                   </li>
                   <li>Service:

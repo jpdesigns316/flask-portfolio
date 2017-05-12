@@ -5,6 +5,7 @@ from sqlalchemy.orm import sessionmaker
 from models import Base, Skills, Education, Portfolio, Work
 from controllers import *
 from functools import wraps
+import os
 
 import random
 import string
@@ -60,6 +61,8 @@ def home():
 
 
 # route for handling the login page logic
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
@@ -80,9 +83,8 @@ def logout():
     return redirect(url_for('home'))
 
 
-@app.route('/admin')
+@app.route('/admin', methods=['GET', 'POST'])
 def admin():
     if 'username' in login_session:
-        return render_template('adminPanel.html', test=user_configuration())
-    else:
-        return redirect(url_for('login'))
+        return render_template('adminPanel.html', config=get_config())
+    return redirect(url_for('login'))
